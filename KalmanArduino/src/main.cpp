@@ -66,6 +66,8 @@ void setup() {
         maskSignal[i] = generateMask(maskLength[i], periodeSize);
     }
 
+
+
     //Setting up the sampling timer
     timerSampling.begin(readInputs, 1000000/samplingFrequency);
     timerSampling.priority(0);
@@ -73,6 +75,8 @@ void setup() {
 
 void loop() {
  
+    Serial.print("Current signal[0] value: ");
+    Serial.println(signal[0][indexSample]);
     if (millis() - last_millis_ekf > EKF_period) {
 
         timerSampling.end(); //Pause sampling interrupt
